@@ -1,4 +1,5 @@
 import flask
+import os
 import requests
 from flask import request
 from bs4 import BeautifulSoup
@@ -257,4 +258,5 @@ def get_article(path):
         return "Invalid URL", 400
 
 
-app.run(host="0.0.0.0", port=5000, debug=False)
+port = int(os.getenv("THIRTEENFT_PORT", os.getenv("PORT", "9982")))
+app.run(host="0.0.0.0", port=port, debug=False)
